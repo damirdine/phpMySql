@@ -1,6 +1,6 @@
 <?php include_once('header.php')?>
 
-<form action="submit_contact.php" method="POST">
+<form class='container' action="submit_contact.php" method="POST">
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help">
