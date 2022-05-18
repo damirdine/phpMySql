@@ -34,7 +34,15 @@
         </ul>
       </div>
     </div>
-    <form class="container-fluid justify-content-end">
-        <a href='./login.php' class="btn btn-primary me-2" type="button">Log in</a>
-    </form>
+    <?php if(!isset($_SESSION['logged_user'])):?>
+    <div class="container-fluid justify-content-end">
+        <a href='./login.php' class="btn btn-primary me-2" type="button">connexion
+        </a>
+    </div>
+    <?php else:?>
+    <div class="container-fluid justify-content-end">
+        <a href='./logout.php' class="btn btn-danger me-2" type="button">deconexion</a>
+    </div>
+    <?php endif;?>
   </nav>
+  <main class="container">
