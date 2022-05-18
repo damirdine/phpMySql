@@ -1,6 +1,7 @@
 <?php
 include_once('header.php');
 ?>
+<p>hello from heroku</p>
 <main class="container">
     <h1>Site de Recettes !</h1>
 
@@ -20,3 +21,5 @@ include_once('header.php');
     <?php endif; ?>
         
     <?php include_once('footer.php'); ?>
+
+
