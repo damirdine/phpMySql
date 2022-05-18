@@ -1,7 +1,4 @@
-<?php
-include_once('header.php');
-?>
-<p>hello from heroku</p>
+<?php include_once('header.php');?>
 <main class="container">
     <h1>Site de Recettes !</h1>
 

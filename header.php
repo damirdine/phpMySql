@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once('variables.php');
     include_once('functions.php');
 
