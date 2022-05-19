@@ -1,7 +1,6 @@
 <?php
     session_start();
     include_once 'variables.php';
-    include_once('header.php');
 ?>
 
 <?php
@@ -11,19 +10,46 @@ $postPassword = $_POST['password'];
 if (isset($postMail)  && isset($postPassword)) {
     foreach ($users as $user) {
         if (($user['email'] === $postMail) && ($user['password'] === $postPassword)) {
+
             $_SESSION['logged_user'] = $user['email'];
             $_SESSION['logged_user_name'] = $user['full_name'];
-
+            setcookie(
+                'logger_user',
+                $_SESSION['logged_user'],
+                [
+                    'expires' => time() + 365*24*3600,
+                    'secure' => true,
+                    'httponly' => true,
+                ]
+            );
+            setcookie(
+                'logged_user_name',
+                $_SESSION['logged_user_name'],
+                [
+                    'expires' => time() + 365*24*3600,
+                    'secure' => true,
+                    'httponly' => true,
+                ]
+            );
         } else {
             $errorMessage = htmlspecialchars(sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)', $_POST['email'], $_POST['password'])) ;
         }
     }
 }
+
 ?>
+
+<?php include_once('header.php'); ?>
+
 <?php if(isset($_SESSION['logged_user'])):?>   
 
-    <p class="alert alert-success">Bonjour <?php htmlspecialchars($_SESSION['logged_user_name'])?> et bienvenue sur le site !</p>
-    
+    <p class="alert alert-success">Bonjour <?php echo(htmlspecialchars(($_COOKIE['logged_user_name'])))?> et bienvenue sur le site !</p>
+    <?php var_dump($_COOKIE)?>
+    <?php 
+        echo('<pre>');
+        var_dump($_COOKIE);
+        echo('<pre>');
+    ?>
 <?php elseif($errorMessage):?>
 
     <p class="alert alert-danger"> <?php echo($errorMessage)?></p>
@@ -57,4 +83,3 @@ if (isset($postMail)  && isset($postPassword)) {
 </form>
 
 <?php endif; ?>
-    
