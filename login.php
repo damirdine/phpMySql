@@ -44,11 +44,10 @@ if (isset($postMail)  && isset($postPassword)) {
 <?php if(isset($_SESSION['logged_user'])):?>   
 
     <p class="alert alert-success">Bonjour <?php echo(htmlspecialchars(($_COOKIE['logged_user_name'])))?> et bienvenue sur le site !</p>
-    <?php var_dump($_COOKIE)?>
     <?php 
-        echo('<pre>');
-        var_dump($_COOKIE);
-        echo('<pre>');
+        //echo('<pre>');
+        //var_dump($_COOKIE);
+        //echo('<pre>');
     ?>
 <?php elseif($errorMessage):?>
 
