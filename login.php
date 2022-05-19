@@ -52,7 +52,7 @@ if (isset($postMail)  && isset($postPassword)) {
 <?php elseif($errorMessage):?>
 
     <p class="alert alert-danger"> <?php echo($errorMessage)?></p>
-    <form class='container' action='./home.php' method="POST">
+    <form class='container' action='./index.php' method="POST">
     <h1>Connexion</h1>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -67,7 +67,7 @@ if (isset($postMail)  && isset($postPassword)) {
 </form>
     
 <?php else: ?>
-    <form class='container' action='./home.php' method="POST">
+    <form class='container' action='./index.php' method="POST">
     <h1>Connexion</h1>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
