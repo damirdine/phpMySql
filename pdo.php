@@ -9,9 +9,12 @@ try{
     die('Erreur : '.$e->getMessage());
 }
 
-$sqlQuery= 'SELECT * FROM recettes WHERE is_enabled = TRUE';
+
+$sqlQuery= 'SELECT * FROM recettes WHERE is_enabled = :is_enabled';
 $recipesStatement = $db->prepare($sqlQuery);
-$recipesStatement->execute();
+$recipesStatement->execute(
+    ['is_enabled' => true,]
+);
 $recipes = $recipesStatement->fetchAll();
 
 foreach($recipes as $recipe) {
