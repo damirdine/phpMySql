@@ -1,13 +1,14 @@
 <?php
-    session_start();
-    include_once 'variables.php';
-?>
+session_start();
+include_once 'variables.php';
 
-<?php
 $postMail = $_POST['email'];
 $postPassword = $_POST['password'];
 
+
+
 if (isset($postMail)  && isset($postPassword)) {
+    
     foreach ($users as $user) {
         if (($user['email'] === $postMail) && ($user['password'] === $postPassword)) {
 

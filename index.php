@@ -1,16 +1,12 @@
 <?php
     session_start();
+    include_once('variable.php');
     include_once('header.php');
     try{
         $db;
     }catch(Exception $e){
         die('Erreur : '.$e->getMessage());
     }
-    
-    $sqlQuery= 'SELECT * FROM recettes';
-    $recipesStatement = $db->prepare($sqlQuery);
-    $recipesStatement->execute();
-    $recipes = $recipesStatement->fetchAll();  
 ?>  
     
 <h1 class="mt-4">Site de Recettes !</h1>

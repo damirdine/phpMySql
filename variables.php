@@ -20,3 +20,13 @@ $db = new PDO(
     $DB_PASSWORD,
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
 );
+
+$sqlQuery= 'SELECT * FROM recettes';
+$recipesStatement = $db->prepare($sqlQuery);
+$recipesStatement->execute();
+$recipes = $recipesStatement->fetchAll();
+
+$sqlUsersQuery= 'SELECT * FROM users';
+$usersStatement = $db->prepare($sqlUsersQuery);
+$usersStatement->execute();
+$users = $usersStatement->fetchAll();
