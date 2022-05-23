@@ -1,7 +1,7 @@
 <?php 
 try{
-    $mysqlClient = new PDO(
-        'mysql:host=localhost;dbname=site_recettes;chartset-utf8',
+    $db = new PDO(
+        'mysql:host=localhost;dbname=site_recettes;charset=utf8',
         'root',
         ''
     );
@@ -10,12 +10,18 @@ try{
 }
 
 $sqlQuery= 'SELECT * FROM recettes';
-$recipesStatement = $mysqlClient->prepare($sqlQuery);
+$recipesStatement = $db->prepare($sqlQuery);
 $recipesStatement->execute();
 $recipes = $recipesStatement->fetchAll();
 
 foreach($recipes as $recipe) {
+    if($recipe['is_enabled']==1){
 ?>
-    <p><?php echo $recipe['author'] ?></p>
 
-<?php } ?>
+    <p><?php echo $recipe['title']?></p>
+    <p><?php echo $recipe['author']?></p>
+    <p><?php echo $recipe['recipe']?></p>
+    <hr>
+
+<?php }
+} ?>
