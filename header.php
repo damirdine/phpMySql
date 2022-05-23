@@ -32,6 +32,11 @@
           <li class="nav-item">
             <a class="nav-link" href="contact.php">Contact</a>
           </li>
+          <?php if(isset($_SESSION['logged_user'])):?>
+          <li class="nav-item">
+            <a class="nav-link" href="add_recipe.php">Ajouter recette</a>
+          </li>
+          <?php endif; ?>
         </ul>
         <div class="d-flex">
           <?php if(!isset($_SESSION['logged_user'])):?>
