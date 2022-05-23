@@ -1,7 +1,5 @@
 <?php if(isset($_SESSION['logged_user'])):?>
 
-
-
 <?php include_once 'header.php' ?>
 <h1 class="mt-4">Ajouter une nouvelle recette</h1>
 <form class="mt-4" action="">
@@ -14,11 +12,14 @@
         <label for="exampleFormControlTextarea1" class="form-label">Votre recette</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Détailler votre recette" rows="10"></textarea>
     </div>
+    <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Créer</button>
+  </div>
 </form>
 
 <?php include_once 'footer.php' ?>
 
 
-<?php else: echo('Accees refuser') ?>
-    
+<?php else: echo('Accès refusé') ?>
+    <br><a href="./index.php">Retourner a l'acceuil</a>
 <?php endif ?>
