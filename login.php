@@ -6,14 +6,13 @@ $postMail = $_POST['email'];
 $postPassword = $_POST['password'];
 
 
-
 if (isset($postMail)  && isset($postPassword)) {
     
     foreach ($users as $user) {
         if (($user['email'] === $postMail) && ($user['password'] === $postPassword)) {
 
             $_SESSION['logged_user'] = $user['email'];
-            $_SESSION['logged_user_name'] = $user['full_name'];
+            $_SESSION['logged_user_name'] = $user['fullname'];
             setcookie(
                 'logger_user',
                 $_SESSION['logged_user'],
