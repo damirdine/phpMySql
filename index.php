@@ -20,6 +20,10 @@
             <div><?php echo ($recipe['recipe']); ?></div>
             <i><?php echo ($recipe['author']); ?></i>
         </article>
+        <div class="button">
+            <a href='./edit_recipe.php' class="btn btn-warning">Editer</a>
+            <a class="btn btn-danger">Supprimer</a>
+        </div>
     <?php endforeach ?>
 <?php endif; ?>
     
