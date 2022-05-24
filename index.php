@@ -21,10 +21,16 @@
             <i><?php echo ($recipe['author']); ?></i>
         </article>
         <?php if ($_SESSION['logged_user']==$recipe['author']) : ?>
-        <div class="button">
-            <a href='./edit_recipe.php' class="btn btn-warning">Editer</a>
-            <a class="btn btn-danger">Supprimer</a>
-        </div>
+            <div class="btn-container d-flex gap-3">
+                <form action="./edit_recipe.php" methode="GET">
+                    <input type="hidden" name="recipe_id" value="<?php echo ($recipe['recpe_id']); ?>">
+                    <input type="submit" class="btn btn-warning" value="Editer">
+                </form>
+                <form action="./delete_recipe.php" methode="GET">
+                    <input type="hidden" name="recipe_id" value="<?php echo ($recipe['recpe_id']); ?>">
+                    <input type="submit" class="btn btn-danger" value="Supprimer">
+                </form>
+            </div>
         <?php endif;?>
     <?php endforeach ?>
 <?php endif; ?>

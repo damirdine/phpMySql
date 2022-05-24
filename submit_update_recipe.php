@@ -4,7 +4,7 @@
 
     if(!isset($_POST['title']) || !isset($_POST['recipe']) || !isset($_SESSION['logged_user'])){
         
-        echo('Veillez bien remplir le formulaire avant de la soumettre');
+        echo('<p class="alert alert-warning mt-5">Veillez bien remplir le formulaire avant de la soumettre</p>');
     }
     // echo('<pre>');
     // var_dump($_POST,$_SESSION['logged_user_name']);
@@ -12,16 +12,16 @@
     $logUser = $_SESSION['logged_user'];
     $title = $_POST['title'];
     $recipe = $_POST['recipe'];
+    $recipe_id = $_POST['recipe_id'];
 
-    $sqlREquest = "INSERT INTO recettes (title,recipe,author,is_enabled) VALUES (:title, :recipe, :author, :is_enabled); ";
-    $addRecipe = $db -> prepare($sqlREquest);
-    $addRecipe->execute(
+
+    $sqlUpdateREquest = "UPDATE recipes SET title = :title, recipe = :recipe WHERE recipe_id = :id";
+    $UpdateRecipe = $db -> prepare($sqlUpdateREquest);
+    $UpdateRecipe->execute(
         [
             'title'=> $title,
             'recipe'=>$recipe,
-            'author'=> $logUser,
-            'is_enabled' => 1
+            'id'=> $recipe_id,
         ]
-    )
-    
+    );
 ?>
