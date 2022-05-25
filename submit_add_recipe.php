@@ -22,6 +22,9 @@
             'author'=> $logUser,
             'is_enabled' => 1
         ]
-    )
-    
+    );
+    include_once 'header.php';
 ?>
+<h3 class="alert alert-success my-5">La recette de : <?php echo($title . " a bien etait supprime" . $recipe_id)?> </h3>
+<a class="btn btn-primary" href="./index.php">Retour a l'accueil</a>
+<?php include_once 'footer.php';?>  

@@ -19,5 +19,6 @@
     include_once 'header.php';
 ?>
 
-<h3 class="alert alert-success my-5">La recette <?php echo($updateTitle . " avec l'id : " . $recipe_id . "a bien etait supprime")?> </h3>
+<h3 class="alert alert-success my-5">La recette <?php echo($updateTitle . " avec l'id : " . $recipe_id . " a bien etait supprime")?> </h3>
 <a class="btn btn-primary" href="./index.php">Retour a l'accueil</a>
+<?php include_once 'footer.php';?>

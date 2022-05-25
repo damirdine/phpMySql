@@ -27,3 +27,4 @@
 
 <h3 class="alert alert-success my-5">Les modifications de la recette : <?php echo($updateTitle . " avec l'id : " . $recipe_id)?> </h3>
 <a class="btn btn-primary" href="./index.php">Retour a l'accueil</a>
+<?php include_once 'footer.php';?>
