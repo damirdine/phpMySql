@@ -22,7 +22,7 @@
             'author'=> $logUser,
             'is_enabled' => 1
         ]
-    );
+    )or die(print_r($db->errorInfo()));
     include_once 'header.php';
 ?>
 <h3 class="alert alert-success my-5">La recette de : <?php echo($title . " a bien etait ajoute." )?> </h3>

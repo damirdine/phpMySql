@@ -15,7 +15,7 @@
         [
             'id'=> $recipe_id,
         ]
-    );
+    )or die(print_r($db->errorInfo()));
     include_once 'header.php';
 ?>
 

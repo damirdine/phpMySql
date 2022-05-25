@@ -8,7 +8,7 @@ if(isset($_GET['recipe_id'])){
     $recipeStatement = $db->prepare($sqlRecipeQuery);
     $recipeStatement->execute(
         ['recpe_id' => $_GET['recipe_id'],]
-    );
+    )or die(print_r($db->errorInfo()));
     $recipe = $recipeStatement->fetch();
 }
 ?>
