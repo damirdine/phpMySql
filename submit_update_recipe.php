@@ -2,26 +2,28 @@
     session_start();
     include_once 'variables.php';
 
-    if(!isset($_POST['title']) || !isset($_POST['recipe']) || !isset($_SESSION['logged_user'])){
-        
-        echo('<p class="alert alert-warning mt-5">Veillez bien remplir le formulaire avant de la soumettre</p>');
+    if(!isset($_POST['update_title']) || !isset($_POST['update_recipe']) || !isset($_SESSION['logged_user'])){  
+        $errorMsg = '<p class="alert alert-warning mt-5">Veillez bien remplir le formulaire avant de la soumettre</p>';
+        echo($errorMsg);
     }
-    // echo('<pre>');
-    // var_dump($_POST,$_SESSION['logged_user_name']);
-    // echo('<pre>');
+     
     $logUser = $_SESSION['logged_user'];
-    $title = $_POST['title'];
-    $recipe = $_POST['recipe'];
+    $updateTitle = $_POST['update_title'];
+    $updateRecipe = $_POST['update_recipe'];
     $recipe_id = $_POST['recipe_id'];
 
 
-    $sqlUpdateREquest = "UPDATE recipes SET title = :title, recipe = :recipe WHERE recipe_id = :id";
+    $sqlUpdateREquest = "UPDATE recettes SET title = :title, recipe = :recipe WHERE recpe_id = :id";
     $UpdateRecipe = $db -> prepare($sqlUpdateREquest);
     $UpdateRecipe->execute(
         [
-            'title'=> $title,
-            'recipe'=>$recipe,
+            'title'=> $updateTitle,
+            'recipe'=>$updateRecipe,
             'id'=> $recipe_id,
         ]
     );
+    include_once 'header.php';
 ?>
+
+<h3 class="alert alert-success my-5">Les modifications de la recette : <?php echo($updateTitle . " avec l'id : " . $recipe_id)?> </h3>
+<a class="btn btn-primary" href="./index.php">Retour a l'accueil</a>

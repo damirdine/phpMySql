@@ -19,12 +19,12 @@ if(isset($_GET['recipe_id'])){
             <p><?php //var_dump($recipe); ?></p>
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Titre</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" name='title' placeholder="Titre de votre recette" required value="<?php echo($recipe['title']);?>">
+                <input type="text" class="form-control" id="formGroupExampleInput" name='update_title' placeholder="Titre de votre recette" required value="<?php echo($recipe['title']);?>">
             </div>
             <input type="hidden" name="recipe_id" value="<?php echo($recipe['recpe_id']);?>">
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Votre recette</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name='recipe' placeholder="Détailler votre recette" rows="10" required><?php echo($recipe['recipe']);?></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name='update_recipe' placeholder="Détailler votre recette" rows="10" required><?php echo($recipe['recipe']);?></textarea>
             </div>
             <div class="col-auto">
             <button type="submit" class="btn btn-warning mb-3">Appliquer les modifications</button>
