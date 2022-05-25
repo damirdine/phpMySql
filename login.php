@@ -49,10 +49,10 @@ if (isset($postMail)  && isset($postPassword)) {
         //var_dump($_COOKIE);
         //echo('<pre>');
     ?>
-<?php elseif($errorMessage):?>
+<?php elseif(isset($errorMessage)):?>
 
     <p class="alert alert-danger"> <?php echo($errorMessage)?></p>
-    <form class='container' action='./index.php' method="POST">
+    <form action='./index.php' method="POST">
     <h1>Connexion</h1>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -65,20 +65,22 @@ if (isset($postMail)  && isset($postPassword)) {
     </div>
     <button type="submit" class="btn btn-primary">Me connecter</button>
 </form>
+<a class="mt-4" href="./signin.php">S'inscrire</a>
     
 <?php else: ?>
-    <form class='container' action='./index.php' method="POST">
-    <h1>Connexion</h1>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" required>
-        <div id="email-help" class="form-text">Nous ne revendrons pas votre email.</div>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Mot de passe</label>
-        <input type='password' class="form-control" placeholder="Votre mot de passe" id="password" name="password" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Me connecter</button>
-</form>
-
+    <form action='./index.php' method="POST">
+        <h1>Connexion</h1>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" required>
+            <div id="email-help" class="form-text">Nous ne revendrons pas votre email.</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type='password' class="form-control" placeholder="Votre mot de passe" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Me connecter</button>
+    </form>
+    <p><br> OU</p>
+    <a class="mt-4" href="./signin.php">S'inscrire</a>
 <?php endif; ?>

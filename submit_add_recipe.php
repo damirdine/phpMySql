@@ -2,7 +2,7 @@
     session_start();
     include_once 'variables.php';
 
-    if(!isset($_POST['title']) || !isset($_POST['recipe']) || !isset($_SESSION['logged_user'])){
+    if(!isset($_SESSION['logged_user'])){
         
         echo('Veillez bien remplir le formulaire avant de la soumettre');
     }

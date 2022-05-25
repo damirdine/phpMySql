@@ -42,6 +42,8 @@
           <?php if(!isset($_SESSION['logged_user'])):?>
             <a href='./login.php' class="btn btn-primary me-2" type="button">connexion
             </a>
+            <a href='./signin.php' class="btn btn-primary bg-light text-primary me-2" type="button">inscription
+            </a>
             <?php else:?>
               <a href='./logout.php' class="btn btn-danger me-2" type="button">deconexion</a>
               <?php endif;?>
