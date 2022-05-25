@@ -15,7 +15,7 @@ if(isset($_GET['recipe_id'])){
 <?php if(isset($recipe)):?>
     <?php if($recipe['author']==$_SESSION['logged_user']):?>
         <h3 class="mt-4">Supprimer definitivement la recette  : <?php echo($recipe['title'] . " (id : " . $recipe['recpe_id'].")") ?></h3>
-        <form action="./submit_delete_recipe.php">
+        <form action="./submit_delete_recipe.php" method="post">
         <input type="hidden" name="recipe_id" value="<?php echo($recipe['recpe_id']);?>">
             <button type="submit" class="btn btn-danger mb-3">Supprimer</button>
         </form>
