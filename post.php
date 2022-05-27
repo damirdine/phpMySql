@@ -17,10 +17,10 @@ if(isset($_GET['recipe_id'])){
     )or die(print_r($db->errorInfo()));
     $comments = $commentsStatement->fetchAll();
 };
-
+var_dump(date('Y-m-d\TH:i:s'),$_POST);
 if(isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user']) ){
 
-    $addCommentSqlREquest = "INSERT INTO comments (comment,recipe,user_id,created_at) VALUES (:comment, :recipe, :user_id, :created_at,); ";
+    $addCommentSqlREquest = "INSERT INTO comments (comment,recipe,user_id,created_at) VALUES (:comment, :recipe, :user_id, :created_at); ";
     $addComment = $db -> prepare($addCommentSqlREquest);
     $addComment->execute(
         [
@@ -28,11 +28,10 @@ if(isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user'
             'recipe'=>$_POST['recipe_id'],
             'user_id'=> $_POST['user'],
             'created_at' => date('Y-m-d\TH:i:s'),
-            'ranking' => null
         ]
     )or die(print_r($db->errorInfo()));
 };
-var_dump(date('Y-m-d\TH:i:s'));
+
 ?>
 <?php if(isset($recipe)):?>
     <?php if(isset($_SESSION['logged_user'])):?>
@@ -44,7 +43,7 @@ var_dump(date('Y-m-d\TH:i:s'));
                 <label for="formGroupExampleInput" class="form-label">Commentaire</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" name='comment' placeholder="Détailler votre recette" rows="2" required></textarea>
             </div>
-            <input type="hidden" name="user" value="<?php echo($_SESSION['logged_user']);?>">
+            <input type="hidden" name="user" value="<?php echo($_SESSION['logged_user_id']);?>">
             <input type="hidden" name="recipe_id" value="<?php echo($recipe['recpe_id']);?>">
             <button type="submit" class="btn btn-warning mb-3">commenter</button>
         </div>
