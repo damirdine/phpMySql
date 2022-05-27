@@ -20,7 +20,7 @@ if(isset($_GET['recipe_id'])){
             <button type="submit" class="btn btn-danger mb-3">Supprimer</button>
         </form>
     <?php else:?>
-        <p class="alert alert-warning mt-5">Vous ne pouvez pas editer des recettes qui ne sont pas les votre</p>
+        <p class="alert alert-warning mt-5">Vous ne pouvez pas éditer une recette qui n'est pas la vôtre</p>
 <?php endif;
 endif;
 include_once 'footer.php';
