@@ -17,7 +17,6 @@ if(isset($_GET['recipe_id'])){
     )or die(print_r($db->errorInfo()));
     $comments = $commentsStatement->fetchAll();
 };
-var_dump(date('Y-m-d\TH:i:s'),$_POST);
 if(isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user']) ){
 
     $addCommentSqlREquest = "INSERT INTO comments (comment,recipe,user_id,created_at) VALUES (:comment, :recipe, :user_id, :created_at); ";
