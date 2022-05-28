@@ -29,6 +29,7 @@ if(isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user'
             'created_at' => date('Y-m-d\TH:i:s'),
         ]
     )or die(print_r($db->errorInfo()));
+    header("Refresh:0; url=post.php?recipe_id=" . print($_POST['recipe_id']));
 };
 
 ?>
@@ -48,6 +49,7 @@ if(isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user'
         </div>
         </form>
         <div class="comments-container">
+       
         <?php foreach ($comments as $comment) : ?>
             <article class="my-4">
                 <h4><?php echo ($comment['user_id']); ?></h4>
