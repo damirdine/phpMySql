@@ -10,6 +10,8 @@ if(isset($_GET['recipe_id'])){
     )or die(print_r($db->errorInfo()));
     $recipe = $recipeStatement->fetch();
 
+    // Jointure pour avoir le nom de l'utilisateur
+
     $sqlCommentsQuery= 'SELECT * FROM comments WHERE recipe = :recipe' ;
     $commentsStatement = $db->prepare($sqlCommentsQuery);
     $commentsStatement->execute(
@@ -18,7 +20,7 @@ if(isset($_GET['recipe_id'])){
     $comments = $commentsStatement->fetchAll();
 };
 if(isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user']) ){
-
+    
     $addCommentSqlREquest = "INSERT INTO comments (comment,recipe,user_id,created_at) VALUES (:comment, :recipe, :user_id, :created_at); ";
     $addComment = $db -> prepare($addCommentSqlREquest);
     $addComment->execute(
@@ -27,10 +29,12 @@ if(isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user'
             'recipe'=>$_POST['recipe_id'],
             'user_id'=> $_POST['user'],
             'created_at' => date('Y-m-d\TH:i:s'),
-        ]
-    )or die(print_r($db->errorInfo()));
-    header("Refresh:0; url=post.php?recipe_id=" . print($_POST['recipe_id']));
+            ]
+            )or die(print_r($db->errorInfo()));
+           
+            header("Refresh:0");
 };
+
 
 ?>
 <?php if(isset($recipe)):?>
@@ -56,6 +60,7 @@ if(isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user'
                 <p><?php echo ($comment['comment']); ?></p>
             </article>
         <?php endforeach; ?>
+
         </div>
     <?php else:?>
         <p class="alert alert-warning mt-5"></p>
