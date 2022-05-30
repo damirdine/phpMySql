@@ -12,7 +12,7 @@ if (isset($_GET['recipe_id'])) {
 
     // Jointure pour avoir le nom de l'utilisateur
 
-    $sqlCommentsQuery = 'SELECT u.fullname, c.comment FROM users u INNER JOIN comments c ON u.id = c.user_id WHERE c.recipe = :recipe ORDER BY c.created_at DESC';
+    $sqlCommentsQuery = 'SELECT u.fullname, c.comment FROM users u INNER JOIN comments c WHERE c.recipe = :recipe ORDER BY c.created_at DESC';
     $commentsStatement = $db->prepare($sqlCommentsQuery);
     $commentsStatement->execute(
         ['recipe' => $_GET['recipe_id'],]
@@ -34,7 +34,6 @@ if (isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user
 
     header("Refresh:0");
 };
-
 
 ?>
 <?php if (isset($recipe)) : ?>
@@ -60,11 +59,11 @@ if (isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user
                         <h4><?php echo ($comment['fullname']); ?></h4>
                         <?php if ($comment['fullname']===$_SESSION['logged_user_name']) : ?>
                         <form class="btn-group" action="./post.php?recipe_id=<?php echo ($recipe['recpe_id']) ?>" method="POST">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                               ...
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             </button>
+                            <input type="hidden" name="comment_id" value="<?php echo ($comment['recpe_id']); ?>">
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><button class="dropdown-item" type="submit">Supprimer</button></li>
+                                <li><button class="dropdown-item text-white bg-danger" type="submit">Supprimer</button></li>
                             </ul>
                         </form>
                         <?php endif; ?>
