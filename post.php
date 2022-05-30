@@ -58,7 +58,7 @@ if (isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user
                 <article class="container-flud my-4">
                     <div class="article__header d-flex justify-content-between">
                         <h4><?php echo ($comment['fullname']); ?></h4>
-                        <?php if ($comment['user_id']===$_SESSION['logged_user_name']) : ?>
+                        <?php if ($comment['fullname']===$_SESSION['logged_user_name']) : ?>
                         <form class="btn-group" action="./post.php?recipe_id=<?php echo ($recipe['recpe_id']) ?>" method="POST">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                ...
