@@ -82,6 +82,7 @@ if(isset($_POST["user_id"]) && isset($_POST["comment_content"])){
                         <?php endif; ?>
                     </div>
                     <p><?php echo ($comment['comment']); ?></p>
+                    <p><?php echo ($comment['created_at']); ?></p>
                 </article>
                 <hr>
             <?php endforeach; ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 23, 2022 at 06:36 PM
+-- Generation Time: May 30, 2022 at 02:41 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -24,6 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `recipe` int(11) DEFAULT NULL,
+  `comment` text DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `recipe`, `comment`, `user_id`, `created_at`) VALUES
+(11, 1, 'Super', 1, '2022-05-30 10:43:20'),
+(12, 3, 'trop bon', 1, '2022-05-30 10:43:35'),
+(13, 4, 'Super recettes', 1, '2022-05-30 10:45:11'),
+(14, 4, 'lkfolfd', 1, '2022-05-30 10:45:38'),
+(15, 2, 'super', 1, '2022-05-30 10:48:33'),
+(18, 1, 'kjgh', 4, '2022-05-30 14:23:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `recettes`
 --
 
@@ -40,15 +66,11 @@ CREATE TABLE `recettes` (
 --
 
 INSERT INTO `recettes` (`recpe_id`, `title`, `recipe`, `author`, `is_enabled`) VALUES
-(1, 'Cassoulet', 'Le cassoulet est une spécialité régionale du Languedoc, à base de haricots secs, généralement blancs, et de viande. À son origine, il était à base de fèves. Le cassoulet tient son nom de la cassole en terre cuite émaillée dite caçòla1 en occitan et fabriquée à Issel.\n', 'mickael.andrieu@exemple.com', 1),
+(1, 'Cassoulet', 'Hello', 'mickael.andrieu@exemple.com', 1),
 (2, 'Couscous', 'Le couscous est d\'une part une semoule de blé dur préparée à l\'huile d\'olive (un des aliments de base traditionnel de la cuisine des pays du Maghreb) et d\'autre part, une spécialité culinaire issue de la cuisine berbère, à base de couscous, de légumes, d\'épices, d\'huile d\'olive et de viande (rouge ou de volaille) ou de poisson.', 'damirdine@exemple.com', 0),
 (3, 'Salade Romaine', 'La salade César est une recette de cuisine de salade composée de la cuisine américaine, traditionnellement préparée en salle à côté de la table, à base de laitue romaine, œuf dur, croûtons, parmesan et de « sauce César » à base de parmesan râpé, huile d\'olive, pâte d\'anchois, ail, vinaigre de vin, moutarde, jaune d\'œuf et sauce Worcestershire.', 'laurene.castor@exemple.com', 0),
 (4, 'Escalope milanaise', 'L\'escalope à la milanaise, ou escalope milanaise est une escalope panée, de viande de veau, traditionnellement prise dans le faux-filet. Historiquement, on la cuit avec du beurre. Elle est généralement servie avec salade ou frites, accompagnée de sauce mayonnaise. On peut y ajouter un filet de jus de citron.\n\nEn Italie, ce mets ne se sert pas avec des pâtes.', 'mathieu.nebra@exemple.com', 1),
-(5, 'EFEFEF', 'FEFEF', 'mickael.andrieu@exemple.com', 1),
-(6, 'EFEFEF', 'FEFEF', 'mickael.andrieu@exemple.com', 1),
-(7, 'EFEFEF', 'FEFEF', 'mickael.andrieu@exemple.com', 1),
-(8, 'EFEFEF', 'FEFEF', 'mickael.andrieu@exemple.com', 1),
-(9, 'fefe', 'efe', 'mickael.andrieu@exemple.com', 1);
+(10, 'MOUHARE', 'FSLKLKLKSLKFJLFKSJFS', 'mickael.andrieu@exemple.com', 1);
 
 -- --------------------------------------------------------
 
@@ -72,11 +94,18 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `age`, `password`) VALUES
 (1, 'Mickaël Andrieu', 'mickael.andrieu@exemple.com', 34, '12345'),
 (2, 'Mathieu Nebra', 'mathieu.nebra@exemple.com', 34, '12345'),
 (3, 'Laurène Castor', 'laurene.castor@exemple.com', 28, '12345'),
-(4, 'Damiridne ALI SOILIHI', 'damirdine@exemple.com', 23, '12345');
+(4, 'Damiridne ALI SOILIHI', 'damirdine@exemple.com', 23, '12345'),
+(5, 'john doe', 'johndoe@exemple.com', 23, '12345');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `recettes`
@@ -95,16 +124,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT for table `recettes`
 --
 ALTER TABLE `recettes`
-  MODIFY `recpe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `recpe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -32,6 +32,7 @@ if (isset($postMail)  && isset($postPassword)) {
                     'httponly' => true,
                 ]
             );
+            header("Refresh:0");
         } else {
             $errorMessage = htmlspecialchars(sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)', $_POST['email'], $_POST['password'])) ;
         }
