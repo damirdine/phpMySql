@@ -35,7 +35,6 @@ if (isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user
 
     header("Refresh:0");
 };
-var_dump($_POST);
 if(isset($_POST["user_id"]) && isset($_POST["comment_content"])){
     $delCommentSqlREquest = "DELETE FROM comments WHERE user_id= :user_id AND comment= :comment";
     $delComment = $db->prepare($delCommentSqlREquest);
@@ -84,11 +83,12 @@ if(isset($_POST["user_id"]) && isset($_POST["comment_content"])){
                     </div>
                     <p><?php echo ($comment['comment']); ?></p>
                 </article>
+                <hr>
             <?php endforeach; ?>
 
         </div>
     <?php else : ?>
-        <p class="alert alert-warning mt-5"></p>
+        <p class="alert alert-warning mt-5">Erreur</p>
 <?php endif;
 endif;
 include_once 'footer.php';
