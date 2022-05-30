@@ -35,13 +35,14 @@ if (isset($_POST['comment']) && isset($_POST['recipe_id']) && isset($_POST['user
 
     header("Refresh:0");
 };
-if(isset($_POST["c"]) && isset($_POST["comment_content"])){
-    $delCommentSqlREquest = "DELETE FROM comments WHERE fullname= :fullname AND comment= :comment";
+var_dump($_POST);
+if(isset($_POST["user_id"]) && isset($_POST["comment_content"])){
+    $delCommentSqlREquest = "DELETE FROM comments WHERE user_id= :user_id AND comment= :comment";
     $delComment = $db->prepare($delCommentSqlREquest);
     $delComment->execute(
         [
             'comment' => $_POST['comment_content'],
-            'fullname' => $_POST['fullname'],
+            'user_id' => $_POST['user_id'],
         ]
     ) or die(print_r($db->errorInfo()));
 
@@ -73,7 +74,7 @@ if(isset($_POST["c"]) && isset($_POST["comment_content"])){
                         <form class="btn-group" action="./post.php?recipe_id=<?php echo ($recipe['recpe_id']) ?>" method="POST">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             </button>
-                            <input type="hidden" name="comment_fullname" value="<?php echo ($comment['fullname']); ?>">
+                            <input type="hidden" name="user_id" value="<?php echo ($_SESSION['logged_user_id']); ?>">
                             <input type="hidden" name="comment_content" value="<?php echo ($comment['comment']); ?>">
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><button class="dropdown-item text-white bg-danger" type="submit">Supprimer</button></li>
