@@ -23,6 +23,9 @@
     - Être informe des erreurs SQL `or die(print_r($db->errorInfo()))`
     - Les jointures SQL pour créer des relations entre les données.
     - Les fonctions SQL
+* Déploiement de l'application:
+    - Déploiement de l'application avec [Heroku](https://fr.wikipedia.org/wiki/Heroku).
+    - Mise en place de base de donnée sur serveur distant.
     
 #### Ressources :
 * Cours [PHP MySQL](https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql)
