@@ -25,5 +25,5 @@
 
 
 <?php else: echo('Accès refusé') ?>
-    <br><a href="./index.php">Retourner vers l'acceuil</a>
+    <br><a href="./index.php">Retourner vers l'accueil</a>
 <?php endif ?>

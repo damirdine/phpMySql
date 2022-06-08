@@ -60,7 +60,7 @@ if(isset($_POST["user_id"]) && isset($_POST["comment_content"])){
             </div>
             <input type="hidden" name="user" value="<?php echo ($_SESSION['logged_user_id']); ?>">
             <input type="hidden" name="recipe_id" value="<?php echo ($recipe['recpe_id']); ?>">
-            <button type="submit" class="btn btn-warning mb-3">commenter</button>
+            <button type="submit" class="btn btn-warning mb-3">Commenter</button>
             </div>
         </form>
         <div class="comments-container">
